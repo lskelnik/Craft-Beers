@@ -1,7 +1,5 @@
 /*
-Exploratory analysis of breweries and craft beer in the United States. Arrange the breweries by state, 
-find the most popular styles of craft beer brewed, the total number of beers at each brewery, craft beers broken out into
-3 different ABV ranges, and the average ABV for the 12 most popular styles of craft beer.
+Exploratory analysis of breweries and craft beer in the United States. 
 
 Skills used: Create procedures, create views, subqueries, correlated subqueries, numeric functions, 
              joins, logical operators, aggregate functions
