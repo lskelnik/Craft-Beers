@@ -1,7 +1,7 @@
 /*
 Exploratory analysis of breweries and craft beer in the United States. 
 
-Skills used: Create procedures, create views, subqueries, correlated subqueries, numeric functions, 
+Skills used: stored procedures, views, subqueries, correlated subqueries, numeric functions, 
              joins, logical operators, aggregate functions
 */
 
