@@ -1,7 +1,9 @@
 /*
-Exploratory analysis of breweries and craft beer in the United States. 
+Exploratory analysis of breweries and craft beer in the United States. Arrange the breweries by state, 
+find the most popular styles of craft beer brewed, the total number of beers at each brewery, craft beers broken out into
+3 different ABV ranges, and the average ABV for the 12 most popular styles of craft beer.
 
-Skills used: stored procedures, views, subqueries, correlated subqueries, numeric functions, 
+Skills used: Create procedures, create views, subqueries, correlated subqueries, numeric functions, 
              joins, logical operators, aggregate functions
 */
 
@@ -37,7 +39,7 @@ SELECT
 FROM beers be
 JOIN breweries br
     ON (be.brewery_id = br.id)
-ORDER BY state, city
+ORDER BY state, city;
 
 -- Show the total number of craft beers by each brewery, ordered from most to least.
 
@@ -53,7 +55,7 @@ SELECT
 FROM beers be
 JOIN breweries br
     ON (be.brewery_id = br.id)
-ORDER BY number_of_craft_beers DESC
+ORDER BY number_of_craft_beers DESC;
 
 -- Show the most popular craft beer styles. Count the total amount for each style, across all breweries. 
 
@@ -108,7 +110,7 @@ SELECT
     (SELECT
         COUNT(*) 
         FROM beers
-        WHERE style LIKE '%Irish Red%') AS Irish_Reds
+        WHERE style LIKE '%Irish Red%') AS Irish_Reds;
         
 -- Show each brewery's craft beer counts for the 5 most popular styles.
 -- Based on the previous view created to show the total amount of each style across all breweries.
@@ -148,7 +150,7 @@ SELECT
 FROM beers be
 JOIN breweries br
     ON (be.brewery_id = br.id)
-ORDER BY IPAs DESC, Pale_Ales DESC, Ambers DESC, Lagers DESC, Blonde_Ales DESC
+ORDER BY IPAs DESC, Pale_Ales DESC, Ambers DESC, Lagers DESC, Blonde_Ales DESC;
 
 -- Show craft beers with an ABV of 8.0% or higher, ordered from highest to lowest ABV and then highest to lowest IBU
 
@@ -164,7 +166,7 @@ FROM beers be
 JOIN breweries br
     ON (be.brewery_id = br.id)
 WHERE ROUND((be.abv * 100), 1) >= 8
-ORDER BY abv DESC, ibu DESC
+ORDER BY abv DESC, ibu DESC;
 
 -- Show craft beers with an ABV of 5.0% to 7.9%, ordered from highest to lowest ABV and then highest to lowest IBU
 
@@ -180,7 +182,7 @@ FROM beers be
 JOIN breweries br
     ON (be.brewery_id = br.id)
 WHERE ROUND((be.abv * 100), 1) > 5 AND ROUND((be.abv * 100), 1) < 8
-ORDER BY abv DESC, ibu DESC
+ORDER BY abv DESC, ibu DESC;
 
 -- Show craft beers with an ABV of less than 5.0%, ordered from highest to lowest ABV and then highest to lowest IBU
 
@@ -196,7 +198,7 @@ FROM beers be
 JOIN breweries br
     ON (be.brewery_id = br.id)
 WHERE ROUND((be.abv * 100), 1) < 5 
-ORDER BY abv DESC, ibu DESC
+ORDER BY abv DESC, ibu DESC;
 
 -- Calculate the average alcohol by volume (abv) for the main styles of craft beer
 
@@ -252,4 +254,3 @@ SELECT
         ROUND(AVG(abv) * 100, 1)
         FROM beers
         WHERE style LIKE '%Blonde%') AS Blonde_Ales
-
